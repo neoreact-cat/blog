@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Introducing Neoreactionary Cat"
-description: "A strange blog with a strange charts. I do not know why or who needs it."
+title: "Introducing Neoreactionary Cat's blog"
+description: "This is a strange blog with a strange things. I do not know why or who needs it."
 tags: [intro]
 ---
 
