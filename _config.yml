@@ -3,7 +3,7 @@
 blog_theme: dark # Use light or dark
 name: Neoreactionary Cat
 paginate: 25
-url: https://neoreact-cat.github.io/blog/ # add your site url (format: https://example.com)
+url: https://neoreact-cat.github.io # add your site url (format: https://example.com)
 
 
 # Optional settings
