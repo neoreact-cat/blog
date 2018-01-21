@@ -10,7 +10,7 @@ url: https://neoreact-cat.github.io/blog/ # add your site url (format: https://e
 
 about_enabled: false # Change to true if you wish to show an icon in the navigation that redirects to the about page
 baseurl: /blog # Set if blog doesn't sit at the root of the domain (format: /blog)
-discus_identifier: # Add your Disqus identifier
+discus_identifier: neoreact-cat # Add your Disqus identifier
 ga_analytics: UA-112798038-1 # Add your GA Tracking Id
 local_fonts: false # Change to true if you wish to use local fonts
 rss_enabled: false # Change to false if not
@@ -19,9 +19,9 @@ social:
   dribbble: # Add your Dribbble handle
   facebook: # Add your Facebook handle
   flickr: # Add your Flickr handle
-  github: # Add your GitHub handle
+  github: neoreact-cat # Add your GitHub handle
   linkedin: # Add your LinkedIn handle
-  twitter: # Add your Twitter handle
+  twitter: neoreact_cat # Add your Twitter handle
   email: # Add your Email address
   bitcoin: # Add your Bitcoin link or address
   ethereum: # Add your Ethereum link or address
