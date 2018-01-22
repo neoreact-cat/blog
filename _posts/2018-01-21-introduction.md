@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Introduction"
-description: "What Neoreactionary Cat's blog about"
+title: "What Neoreactionary Cat blog about?"
+description: "Introduction"
 ---
 
 Imagine you are live in Russia.<br/>

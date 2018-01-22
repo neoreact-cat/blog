@@ -43,4 +43,19 @@
     <link rel="apple-touch-icon" href="{% asset apple-touch-icon-dark.png @path %}">
     {% asset dark.css %}
   {% endif %}
+
+  {% if page.google-chart-packages %}
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': [{% for package in page.google-chart-packages %}{% assign i = forloop.index %}{% if i != 1 %},{% endif %}'{{ package }}'{% endfor %}],
+        'mapsApiKey': 'AIzaSyD-I3nnBs9JANZDMRpjjfPjzizh1VklxYI'
+    });
+  </script>
+  {% endif %}
+
+  {% asset charts.css %}
 </head>
+
+<!-- // gtag('config', '{{ site.ga_analytics }}'); -->
