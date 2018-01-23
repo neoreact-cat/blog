@@ -2,7 +2,7 @@
 layout: post
 title: "Population of Russia"
 description: "The First Chapter"
-google-chart-packages: ["table", "geochart"]
+google-chart-packages: ["table", "geochart", "sankey"]
 hidden: 1
 ---
 {% include_relative _charts/population.html %}
@@ -28,10 +28,12 @@ Each of them has a huge territory and population as shown at the following map:
 </table>
 
 <br/>
-The largest number of people live in the Central district. <br/>
-Far Eastern district has the smallest population. <br/>
+The **largest** number of people live in the Central district. <br/>
+Far Eastern district has the **smallest** population. <br/>
 
-<table>
+**Table #1. Russian population and urbanization by federal districts** (**[Click To Open A Full Size](population-districts-map)**) <br/>
+
+<table width="100%">
     <tr>
         <td>
             <div id="districts_population_table"/>
@@ -39,7 +41,20 @@ Far Eastern district has the smallest population. <br/>
     </tr>
 </table>
 
-<br/>
-North-west is the most urbanized, North Caucasus is the least. <br/> 
-But the largest number of villagers are living in the Volga district.
 
+<br/>
+North-west is **the most urbanized** North Caucasus is **the least**. <br/> 
+But the **largest number of villagers** are living in the Volga district.
+
+**Flow #1. Russian population and urbanization by federal districts** (**[Click To Open A Full Size](population-districts-map)**). <br/> **Width of a flow indicates a population. Brightness is a percent of urbanization.** <br/>
+
+<table width="100%">
+    <tr>
+        <td>
+            <div id="districts_population_sankey"/>
+        </td>
+    </tr>
+</table>
+
+<br/>
+Let's go deeper..

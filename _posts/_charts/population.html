@@ -7,6 +7,8 @@
         success: function(json){
             var districtsTable = drawDistrictsTable(json)
             var districtsPopulationGeo = drawDistrictsPopulationGeo(json)
+            var districtsPopulationSankey = drawDistrictsPopulationSankey(json)
+
         }})
     })
 
@@ -18,7 +20,7 @@
     strings.Urban = 'Urban'
     strings.Rural = 'Rural'
     strings.TotalPercent = '% of total'
-    strings.UrbanPercent = 'Urbanization %'
+    strings.UrbanPercent = '% of urbanization'
     strings.Total = "Total"
 
     function drawDistrictsTable(json) {
@@ -66,7 +68,8 @@
                     v: (d.PopulationUrban / districtPopulationPercent), 
                     f: highlightIf(minUrbanizationId == d.Id, parseFloat((d.PopulationUrban / districtPopulationPercent).toFixed(1)) + "%") 
                 }
-        ]) });
+            ]) 
+        });
 
         data.sort({column: 1, desc: true}); 
 
@@ -127,6 +130,39 @@
             colorAxis: { colors: ['#054604', '#0FD90C'] } });
 
         return geo
+    }
+
+    function drawDistrictsPopulationSankey(json) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'From')
+        data.addColumn('string', 'To')
+        data.addColumn('number', strings.Population)
+        data.addColumn('number', strings.UrbanPercent)
+
+        var populationPercent = json.Population / 100
+        json.Districts.forEach(d => { 
+            var districtPopulationPercent = d.Population / 100
+            data.addRow([ 
+                d.DistrictEn, 
+                strings.Total, 
+                d.Population, 
+                parseFloat((d.PopulationUrban / districtPopulationPercent).toFixed(1))
+        ]) })
+
+        var chart = new google.visualization.Sankey(document.getElementById('districts_population_sankey'));
+        chart.draw(data, {
+            width: '100%', 
+            height:'400',
+            backgroundColor: '#121111',
+            sankey: {
+                node: {
+                    colors: ['#0FD90C'],
+                    label: {
+                        color: 'white'
+                    }
+                }
+            }
+        });
     }
 
 </script>
