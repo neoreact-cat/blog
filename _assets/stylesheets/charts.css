@@ -9,3 +9,7 @@ th.gradient {
     background-color: #121111;
     background-image: none !important;
 }
+span.highlighted {
+    font-weight: bolder;
+    font-style: oblique;
+}

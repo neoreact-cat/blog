@@ -7,17 +7,17 @@ hidden: 1
 ---
 {% include_relative _charts/population.html %}
 
-Russia is a complex and inequal state.<br/>
+Russia is a complex and inequal state. <br/>
 Russian regions vary in size, wealth, population, autonomy, etc.
 
 **This chapter is all about population.**
 
-All regions are united for eight federal districts.<br/>
+All regions are united for eight federal districts. <br/>
 Each of them has a huge territory and population as shown at the following map:
 
-*Disclaimer: Google Charts engine disallowing to display the Crimea as part of Russia*<br/>
+*Disclaimer: Google Charts engine disallowing to display the Crimea as part of Russia* <br/>
 
-**Map #1. Russian population by federal districts** (**[Click To Open A Full Size](population-districts-map)**)<br/>
+**Map #1. Russian population by federal districts** (**[Click To Open A Full Size](population-districts-map)**) <br/>
 
 <table width="100%">
     <tr>
@@ -25,6 +25,13 @@ Each of them has a huge territory and population as shown at the following map:
             <div id="districts_population_geo"/>
         </td>
     </tr>
+</table>
+
+<br/>
+The largest number of people live in the Central district. <br/>
+Far Eastern district has the smallest population. <br/>
+
+<table>
     <tr>
         <td>
             <div id="districts_population_table"/>
@@ -32,4 +39,7 @@ Each of them has a huge territory and population as shown at the following map:
     </tr>
 </table>
 
+<br/>
+North-west is the most urbanized, North Caucasus is the least. <br/> 
+But the largest number of villagers are living in the Volga district.
 

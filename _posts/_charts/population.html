@@ -5,62 +5,90 @@
         dataType: "json",
         async: true,
         success: function(json){
-            // var districtsTable = drawDistrictsTable(json)
+            var districtsTable = drawDistrictsTable(json)
             var districtsPopulationGeo = drawDistrictsPopulationGeo(json)
-            // var districtsPopulationPie = drawDistrictsPopulationPie(json)
-
-            // google.visualization.events.addListener(districtsTable, 'select', function (e) {
-            //     var selectedDistrict = districtsTable.getSelection().row
-            //     // var 
-            //     // districtsPopulationPie.setSelection(districtsTable.getSelection());
-            // });
-
-            // google.visualization.events.addListener(districtsPopulationPie, 'select', function (e) {
-            //     districtsTable.setSelection(districtsPopulationPie.getSelection());
-            // });
         }})
     })
 
     var strings = {}
     strings.District = 'District'
     strings.Population = 'Population'
-    strings.PopulationPercent = '% of total'
+    strings.PopulationUrban = 'Urban Population'
+    strings.PopulationRural = 'Rural Population'
+    strings.Urban = 'Urban'
+    strings.Rural = 'Rural'
+    strings.TotalPercent = '% of total'
+    strings.UrbanPercent = 'Urbanization %'
     strings.Total = "Total"
 
     function drawDistrictsTable(json) {
         var data = new google.visualization.DataTable();
         data.addColumn('string', strings.District)
         data.addColumn('number', strings.Population)
-        data.addColumn('number', strings.PopulationPercent)
+        data.addColumn('number', strings.TotalPercent)
+        data.addColumn('number', strings.Urban)
+        data.addColumn('number', strings.Rural)
+        data.addColumn('number', strings.UrbanPercent)
 
-        var populationPersent = json.TotalPopulation / 100
-        json.Districts.forEach(d => { data.addRow([
-            d.DistrictEn, 
-            d.Population,
-            { v: (d.Population / populationPersent), f: parseFloat((d.Population / populationPersent).toFixed(1)) + "%" }
+        var maxRuralId
+        var maxRural = 0
+        var minUrbanizationId
+        var minUrbanization = 100
+        json.Districts.forEach(d => { 
+            if(d.PopulationRural > maxRural) {
+                maxRural = d.PopulationRural
+                maxRuralId = d.Id
+            }
+            var districtPopulationPercent = d.Population / 100
+            if((d.PopulationUrban / districtPopulationPercent) < minUrbanization) {
+                minUrbanization = (d.PopulationUrban / districtPopulationPercent)
+                minUrbanizationId = d.Id
+            }
+        })
+
+        function highlightIf(h, v) {
+            return h ? '<span class="highlighted">' + v + '</span>' : v
+        }
+
+        var populationPercent = json.Population / 100
+        json.Districts.forEach(d => { 
+            var districtPopulationPercent = d.Population / 100
+            data.addRow([
+                d.DistrictEn, 
+                d.Population,
+                { v: (d.Population / populationPercent), f: parseFloat((d.Population / populationPercent).toFixed(1)) + "%" },
+                d.PopulationUrban,
+                { 
+                    v: d.PopulationRural , 
+                    f: highlightIf(maxRuralId == d.Id,d.PopulationRural.toLocaleString('en')) 
+                },
+                { 
+                    v: (d.PopulationUrban / districtPopulationPercent), 
+                    f: highlightIf(minUrbanizationId == d.Id, parseFloat((d.PopulationUrban / districtPopulationPercent).toFixed(1)) + "%") 
+                }
         ]) });
 
         data.sort({column: 1, desc: true}); 
 
         data.addRow([ 
             strings.Total, 
-            json.TotalPopulation,
-            { v: 100, f: "100%" }
+            json.Population,
+            { v: 100, f: "100%" },
+            json.PopulationUrban,
+            json.PopulationRural,
+            { v: (json.PopulationUrban / populationPercent), f: parseFloat((json.PopulationUrban / populationPercent).toFixed(1)) + "%" }
         ])
 
         var view = new google.visualization.DataView(data);
-        view.setColumns([0,1,2])
+        view.setColumns([0,1,2,3,4,5])
 
         var table = new google.visualization.Table(document.getElementById('districts_population_table'));
         table.draw(view, { 
             showRowNumber: false, 
             width: '100%', 
             height: '100%', 
-            sort: 'disable'//,
-            // cssClassNames = {
-            //     headerRow: 'chartTableHeaderRow',
-            //     hoverTableRow: 'chartTableHighlight'
-            // }
+            sort: 'disable',
+            allowHtml: true
         })
 
         return table
@@ -69,14 +97,14 @@
     function drawDistrictsPopulationGeo(json) {
         var data = new google.visualization.DataTable();
         data.addColumn('string', strings.Region)
-        data.addColumn('number', strings.PopulationPercent)
+        data.addColumn('number', strings.TotalPercent)
         data.addColumn('number', strings.Population)
         
-        var populationPersent = json.TotalPopulation / 100
+        var populationPercent = json.Population / 100
         json.Districts.forEach(d => {
             d.Regions.forEach(r => { data.addRow([ 
                 { v: r.ISO3166Location, f: d.DistrictEn }, 
-                parseFloat((d.Population / populationPersent).toFixed(1)),
+                parseFloat((d.Population / populationPercent).toFixed(1)),
                 d.Population
             ]) }); 
         })
@@ -101,28 +129,4 @@
         return geo
     }
 
-
-    function drawDistrictsPopulationPie(json) {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', strings.District)
-        data.addColumn('number', strings.Population)
-
-        json.Districts.forEach(d => { data.addRow([
-            d.DistrictEn, 
-            d.Population
-        ]) });
-        data.sort({column: 1, desc: true}); 
-
-        var chart = new google.visualization.PieChart(document.getElementById('districts_population_pie'));
-        
-        chart.draw(data, { 
-            pieHole: 0, 
-            width: '600', 
-            height: '600', 
-            legend: 'none',
-            backgroundColor: '#121111',
-            chartArea:{left:20,top:20,width:'60%',height:'60%'} });
-
-        return chart
-    }
 </script>

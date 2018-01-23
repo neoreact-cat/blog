@@ -7,5 +7,17 @@ hidden: 1
 ---
 {% include_relative _charts/population.html %}
 
-<div id="districts_population_geo"/>
+
+<table width="100%">
+    <tr>
+        <td>
+            <div id="districts_population_geo"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="districts_population_table"/>
+        </td>
+    </tr>
+</table>
 
