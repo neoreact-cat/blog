@@ -8,12 +8,14 @@
             var districtsTable = drawDistrictsTable(json)
             var districtsPopulationGeo = drawDistrictsPopulationGeo(json)
             var districtsPopulationSankey = drawDistrictsPopulationSankey(json)
-
+            var regionsPopulationGeo = drawRegionsPopulationGeo(json)
+            var regionsTable = drawRegionsTable(json)
         }})
     })
 
     var strings = {}
     strings.District = 'District'
+    strings.Region = 'District'
     strings.Population = 'Population'
     strings.PopulationUrban = 'Urban Population'
     strings.PopulationRural = 'Rural Population'
@@ -62,7 +64,7 @@
                 d.PopulationUrban,
                 { 
                     v: d.PopulationRural , 
-                    f: highlightIf(maxRuralId == d.Id,d.PopulationRural.toLocaleString('en')) 
+                    f: highlightIf(maxRuralId == d.Id, d.PopulationRural.toLocaleString('en')) 
                 },
                 { 
                     v: (d.PopulationUrban / districtPopulationPercent), 
@@ -75,7 +77,7 @@
 
         data.addRow([ 
             strings.Total, 
-            json.Population,
+            { v: json.Population, f: highlightIf(true, json.Population.toLocaleString('en')) },
             { v: 100, f: "100%" },
             json.PopulationUrban,
             json.PopulationRural,
@@ -99,7 +101,7 @@
 
     function drawDistrictsPopulationGeo(json) {
         var data = new google.visualization.DataTable();
-        data.addColumn('string', strings.Region)
+        data.addColumn('string', strings.District)
         data.addColumn('number', strings.TotalPercent)
         data.addColumn('number', strings.Population)
         
@@ -152,7 +154,7 @@
         var chart = new google.visualization.Sankey(document.getElementById('districts_population_sankey'));
         chart.draw(data, {
             width: '100%', 
-            height:'400',
+            height:'350',
             backgroundColor: '#121111',
             sankey: {
                 node: {
@@ -163,6 +165,124 @@
                 }
             }
         });
+    }
+
+    function drawRegionsPopulationGeo(json) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', strings.Region)
+        data.addColumn('number', strings.TotalPercent)
+        data.addColumn('number', strings.Population)
+        
+        var populationPercent = json.Population / 100
+        json.Districts.forEach(d => {
+            d.Regions.forEach(r => { data.addRow([ 
+                { v: r.ISO3166Location, f: r.RegionEn }, 
+                parseFloat((r.Population / populationPercent).toFixed(1)),
+                r.Population
+            ]) }); 
+        })
+        data.sort({column: 1, desc: true}); 
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0,1,2])
+
+        var geo = new google.visualization.GeoChart(document.getElementById('regions_population_geo'));
+
+        geo.draw(view, { 
+            dataMode: 'regions', 
+            displayMode: 'regions', 
+            region: 'RU', 
+            resolution: 'provinces',
+            width: '100%', 
+            height:'100%',
+            backgroundColor: '#121111',
+            datalessRegionColor: '#121111',
+            colorAxis: { colors: ['#054604', '#0FD90C', '#10E00D'] } });
+
+        return geo
+    }
+
+
+    function drawRegionsTable(json) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', strings.Region)
+        data.addColumn('number', strings.Population)
+        data.addColumn('number', strings.TotalPercent)
+        // data.addColumn('number', strings.Urban)
+        // data.addColumn('number', strings.Rural)
+        // data.addColumn('number', strings.UrbanPercent)
+
+        // var maxRuralId
+        // var maxRural = 0
+        // var minUrbanizationId
+        // var minUrbanization = 100
+        // json.Districts.forEach(d => { 
+        //     if(d.PopulationRural > maxRural) {
+        //         maxRural = d.PopulationRural
+        //         maxRuralId = d.Id
+        //     }
+        //     var districtPopulationPercent = d.Population / 100
+        //     if((d.PopulationUrban / districtPopulationPercent) < minUrbanization) {
+        //         minUrbanization = (d.PopulationUrban / districtPopulationPercent)
+        //         minUrbanizationId = d.Id
+        //     }
+        // })
+
+        function highlightIf(h, v) {
+            return h ? '<span class="highlighted">' + v + '</span>' : v
+        }
+
+        var populationPercent = json.Population / 100
+        json.Districts.forEach(d => { 
+            d.Regions.forEach(r => {
+                data.addRow([
+                    r.RegionEn,
+                    r.Population,
+                    { v: (r.Population / populationPercent), f: parseFloat((r.Population / populationPercent).toFixed(1)) + "%" },
+                ])
+            })
+            // var districtPopulationPercent = d.Population / 100
+            // data.addRow([
+            //     d.DistrictEn, 
+            //     d.Population,
+            //     { v: (d.Population / populationPercent), f: parseFloat((d.Population / populationPercent).toFixed(1)) + "%" },
+            //     d.PopulationUrban,
+            //     { 
+            //         v: d.PopulationRural , 
+            //         f: highlightIf(maxRuralId == d.Id, d.PopulationRural.toLocaleString('en')) 
+            //     },
+            //     { 
+            //         v: (d.PopulationUrban / districtPopulationPercent), 
+            //         f: highlightIf(minUrbanizationId == d.Id, parseFloat((d.PopulationUrban / districtPopulationPercent).toFixed(1)) + "%") 
+            //     }
+            // ]) 
+        });
+
+        data.sort({column: 1, desc: true}); 
+
+        data.addRow([ 
+            strings.Total, 
+            { v: json.Population, f: highlightIf(true, json.Population.toLocaleString('en')) },
+            { v: 100, f: "100%" },
+            // json.PopulationUrban,
+            // json.PopulationRural,
+            // { v: (json.PopulationUrban / populationPercent), f: parseFloat((json.PopulationUrban / populationPercent).toFixed(1)) + "%" }
+        ])
+
+        var view = new google.visualization.DataView(data);
+        // view.setColumns([0,1,2,3,4,5])
+        view.setColumns([0,1,2])
+
+        var table = new google.visualization.Table(document.getElementById('regions_population_table'));
+        table.draw(view, { 
+            showRowNumber: false, 
+            width: '100%', 
+            height: '100%', 
+            sort: 'disable',
+            allowHtml: true
+        })
+
+        return table
     }
 
 </script>

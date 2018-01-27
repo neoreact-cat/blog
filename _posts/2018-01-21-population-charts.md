@@ -32,3 +32,20 @@ hidden: 1
     </tr>
 </table>
 
+<br/>
+<table width="100%">
+    <tr>
+        <td>
+            <div id="regions_population_geo"/>
+        </td>
+    </tr>
+</table>
+
+<br/>
+<table width="100%">
+    <tr>
+        <td>
+            <div id="regions_population_table"/>
+        </td>
+    </tr>
+</table>
