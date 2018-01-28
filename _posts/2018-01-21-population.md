@@ -2,7 +2,7 @@
 layout: post
 title: "Population of Russia"
 description: "The First Chapter"
-google-chart-packages: ["table", "geochart", "sankey"]
+google-chart-packages: ["table", "geochart"]
 hidden: 1
 ---
 {% include_relative _charts/population.html %}
@@ -39,24 +39,10 @@ Far Eastern district has the **smallest** population. <br/>
     </tr>
 </table>
 
-**Table #1. Russian population and urbanization by federal districts** (**[Click To Open A Full Size](population-charts)**) <br/>
+**Table #1. Russian population by federal districts** (**[Click To Open A Full Size](population-charts)**) <br/>
 
-North-west is **the most urbanized** North Caucasus is **the least**. <br/> 
-But the **largest number of villagers** are living in the Volga district.
-
-<table width="100%">
-    <tr>
-        <td>
-            <div id="districts_population_sankey"/>
-        </td>
-    </tr>
-</table>
-
-**Flow #1. Russian population and urbanization by federal districts** (**[Click To Open A Full Size](population-charts)**). <br/> **Width of a flow indicates a population. Brightness is a percent of urbanization.** <br/>
-
-
-Let's go deeper and look a little bit more detailed.. There are 85 Regions in Russia: <br/>
-(***including 2 regions in the Crimea what is not presented in the map beacause a Google Charts disallow to display them***)<br/>
+Let's look more detailed.. <br/>
+There are 85 Regions in Russia (*including 2 regions in the Crimea what is not presented in the map beacause the Google Charts disallow to display them*)<br/>
 
 <table width="100%">
     <tr>
@@ -68,6 +54,12 @@ Let's go deeper and look a little bit more detailed.. There are 85 Regions in Ru
 
 **Map #2. Russian population by regions** (**[Click To Open A Full Size](population-charts)**) <br/>
 
+The Central Federal District is **very centralized** and **high-concentrated** around Moscow. <br/>
+**19,4 millions** of people live in Moscow and Moscow oblast (**12,7%** of Russia's population) <br/>
+Another leaders is Krasnodarsky krai, Saint Petersburg, Sverdlovsk and Rostov oblast. <br/>
+Several regions in South, Volga, Ural and Siberian federal districts also high-populated. <br/>
+
+
 <table width="100%">
     <tr>
         <td>
@@ -76,7 +68,7 @@ Let's go deeper and look a little bit more detailed.. There are 85 Regions in Ru
     </tr>
 </table>
 
-**Table #2. Russian population and urbanization by regions** (**[Click To Open A Full Size](population-charts)**) <br/>
+**Table #2. Russian population by regions** (**[Click To Open A Full Size](population-charts)**) <br/>
 
 
 
