@@ -1,12 +1,13 @@
 ---
 layout: details
-title: "The First Chapter"
-description: "Population of Russia. Districts."
-google-chart-packages: ["table", "geochart", "sankey"]
+title: "Population of Russia"
+description: "The First Chapter"
+google-chart-packages: ["table", "geochart"]
 hidden: 1
 ---
 {% include_relative _charts/population.html %}
 
+<br/>
 <table width="100%">
     <tr>
         <td>
@@ -15,6 +16,7 @@ hidden: 1
     </tr>
 <table>
 
+<br/>
 <table width="100%">
     <tr>
         <td>
@@ -22,15 +24,6 @@ hidden: 1
         </td>
     </tr>
 <table>
-
-<br/>
-<table width="100%">
-    <tr>
-        <td>
-            <div id="districts_population_sankey"/>
-        </td>
-    </tr>
-</table>
 
 <br/>
 <table width="100%">

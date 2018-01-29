@@ -15,8 +15,6 @@ Russian regions vary in size, wealth, population, autonomy, etc.
 All regions are united for eight federal districts. <br/>
 Each of them has a huge territory and population as shown at the following map:
 
-*Disclaimer: Google Charts engine disallowing to display the Crimea as part of Russia* <br/>
-
 <table width="100%">
     <tr>
         <td>
@@ -26,6 +24,7 @@ Each of them has a huge territory and population as shown at the following map:
 </table>
 
 **Map #1. Russian population by federal districts** (**[Click To Open A Full Size](population-charts)**) <br/>
+*Disclaimer: Google Charts engine disallowing to display the Crimea as part of Russia* <br/>
 
 Russia's population is more than **146 million**. <br/>
 The **largest** number of people live in the Central district. <br/>
@@ -41,8 +40,7 @@ Far Eastern district has the **smallest** population. <br/>
 
 **Table #1. Russian population by federal districts** (**[Click To Open A Full Size](population-charts)**) <br/>
 
-Let's look more detailed.. <br/>
-There are 85 Regions in Russia (*including 2 regions in the Crimea what is not presented in the map beacause the Google Charts disallow to display them*)<br/>
+Let's look more detailed. There are 85 Regions in Russia: <br/>
 
 <table width="100%">
     <tr>
@@ -58,7 +56,8 @@ The Central Federal District is **very centralized** and **high-concentrated** a
 **19,4 millions** of people live in Moscow and Moscow oblast (**12,7%** of Russia's population) <br/>
 Another leaders is Krasnodarsky krai, Saint Petersburg, Sverdlovsk and Rostov oblast. <br/>
 Several regions in South, Volga, Ural and Siberian federal districts also high-populated. <br/>
-
+<br/>
+Far east, far north and some regions in Siberia are poorly populated.<br/>
 
 <table width="100%">
     <tr>
@@ -69,6 +68,8 @@ Several regions in South, Volga, Ural and Siberian federal districts also high-p
 </table>
 
 **Table #2. Russian population by regions** (**[Click To Open A Full Size](population-charts)**) <br/>
+
+*The post about urbanization coming soon..*
 
 
 
