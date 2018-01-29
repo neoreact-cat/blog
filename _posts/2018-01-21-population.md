@@ -3,7 +3,6 @@ layout: post
 title: "Population of Russia"
 description: "The First Chapter"
 google-chart-packages: ["table", "geochart"]
-hidden: 1
 ---
 {% include_relative _charts/population.html %}
 
