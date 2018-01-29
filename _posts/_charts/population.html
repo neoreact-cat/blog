@@ -30,8 +30,8 @@
         data.addColumn('number', strings.Population)
         
         var populationPercent = json.Population / 100
-        json.Districts.forEach(d => {
-            d.Regions.forEach(r => { data.addRow([ 
+        json.Districts.forEach(function(d) {
+            d.Regions.forEach(function(r) { data.addRow([ 
                 { v: r.ISO3166Location, f: d.DistrictEn }, 
                 parseFloat((d.Population / populationPercent).toFixed(1)),
                 d.Population
@@ -65,7 +65,7 @@
         data.addColumn('number', strings.TotalPercent)
 
         var populationPercent = json.Population / 100
-        json.Districts.forEach(d => { 
+        json.Districts.forEach(function(d) { 
             var districtPopulationPercent = d.Population / 100
             data.addRow([
                 d.DistrictEn, 
@@ -104,8 +104,8 @@
         data.addColumn('number', strings.Population)
         
         var populationPercent = json.Population / 100
-        json.Districts.forEach(d => {
-            d.Regions.forEach(r => { data.addRow([ 
+        json.Districts.forEach(function(d) {
+            d.Regions.forEach(function(r) { data.addRow([ 
                 { v: r.ISO3166Location, f: r.RegionEn }, 
                 parseFloat((r.Population / populationPercent).toFixed(1)),
                 r.Population
@@ -139,8 +139,8 @@
         data.addColumn('number', strings.TotalPercent)
 
         var populationPercent = json.Population / 100
-        json.Districts.forEach(d => { 
-            d.Regions.forEach(r => {
+        json.Districts.forEach(function(d) { 
+            d.Regions.forEach(function(r) {
                 var regionPopulationPercent = r.Population / 100
                 data.addRow([
                     r.RegionEn,
