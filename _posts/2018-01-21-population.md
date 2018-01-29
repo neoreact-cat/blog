@@ -54,9 +54,9 @@ Let's look more detailed. There are 85 Regions in Russia: <br/>
 The Central Federal District is **very centralized** and **high-concentrated** around Moscow. <br/>
 **19,4 millions** of people live in Moscow and Moscow oblast (**12,7%** of Russia's population) <br/>
 Another leaders is Krasnodarsky krai, Saint Petersburg, Sverdlovsk and Rostov oblast. <br/>
-Several regions in South, Volga, Ural and Siberian federal districts also high-populated. <br/>
+Several regions in South, Volga, Ural, Central and Siberian federal districts also high-populated. <br/>
 <br/>
-Far east, far north and some regions in Siberia are poorly populated.<br/>
+Far east, far north and some regions in Siberia are not.<br/>
 
 <table width="100%">
     <tr>
