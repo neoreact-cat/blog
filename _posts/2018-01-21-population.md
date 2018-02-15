@@ -39,7 +39,7 @@ Far Eastern district has the **smallest** population. <br/>
 
 **Table #1. Russian population by federal districts** (**[Click To Open A Full Size](population-charts)**) <br/>
 
-Let's look more detailed. There are 85 Regions in Russia: <br/>
+Let's look more detailed. There are 85 regions in Russia: <br/>
 
 <table width="100%">
     <tr>
@@ -56,7 +56,7 @@ The Central Federal District is **very centralized** and **high-concentrated** a
 Another leaders is Krasnodarsky krai, Saint Petersburg, Sverdlovsk and Rostov oblast. <br/>
 Several regions in South, Volga, Ural, Central and Siberian federal districts also high-populated. <br/>
 <br/>
-Far east, far north and some regions in Siberia are not.<br/>
+Far East, Far North and some regions in Siberia are not.<br/>
 
 <table width="100%">
     <tr>

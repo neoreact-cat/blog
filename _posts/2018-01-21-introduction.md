@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "What Neoreactionary Cat blog about?"
+title: "What Neoreactionary Cat's blog about?"
 description: "Introduction"
 ---
 
